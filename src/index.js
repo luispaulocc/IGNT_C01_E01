@@ -15,7 +15,7 @@ function checksExistsUserAccount(request, response, next) {
   const user = users.find( user => user.username === username)
 
   if(!user){
-    return response.status(404).json({erros:"User not foud!"})
+    return response.status(404).json({error:"User not foud!"})
   }
 
   request.user = user
@@ -54,23 +54,19 @@ app.get('/todos', checksExistsUserAccount, (request, response) => {
 
 
 app.post('/todos', checksExistsUserAccount, (request, response) => {
-    const {title, done, deadline}= request.body
+    const {title,  deadline}= request.body
     const {user}=request
     const id = uuidv4()
 
     const todoOperation={
           id:id,
           title:title,
-          done:done?done:false,
+          done:false,
           deadline: new Date(deadline),
           created_at:new Date()
     }
     user.todos.push(todoOperation)  
-    return response.status(201).json({created_at: todoOperation.created_at, 
-                                      deadline: todoOperation.deadline, 
-                                      done:todoOperation.done, 
-                                      id: todoOperation.id, 
-                                      title: todoOperation.title}).send() 
+    return response.status(201).json(todoOperation).send() 
                                     
     })
 
