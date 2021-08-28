@@ -5,7 +5,8 @@
   "license": "MIT",
   "scripts": {
     "dev": "nodemon",
-    "test": "jest"
+    "test": "jest",
+    "inicio": "nodemon index.js"
   },
   "dependencies": {
     "cors": "^2.8.5",
@@ -16,5 +17,7 @@
     "jest": "^26.6.3",
     "nodemon": "^2.0.7",
     "supertest": "^6.1.3"
-  }
+  },
+  "repository": "git@github.com:luispaulocc/IGNT_C01_E01.git",
+  "author": "Luis Correa <correaluisp@gmail.com>"
 }
